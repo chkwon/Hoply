@@ -1,0 +1,140 @@
+:root {
+  color-scheme: light;
+  --viewer-bg: #f1f3f6;
+  --page-bg: #ffffff;
+  --text: #17202a;
+  --muted: #667085;
+  --shadow: 0 8px 28px rgba(17, 24, 39, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#viewer-shell {
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--viewer-bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  overflow-x: auto;
+}
+
+#viewer-shell {
+  min-width: 100%;
+  min-height: 100dvh;
+  padding: 0 0 14px;
+}
+
+#pages {
+  display: grid;
+  width: max-content;
+  min-width: 100%;
+  gap: 12px;
+  justify-items: center;
+  margin: 0 auto;
+}
+
+.page {
+  width: var(--display-width, 100vw);
+  min-height: 160px;
+  background: var(--page-bg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transform-origin: top center;
+}
+
+.page svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.page-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: min(260px, 80vh);
+  height: var(--display-height, 80vh);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#status-panel,
+#error-panel {
+  max-width: 420px;
+  margin: 30vh auto 0;
+  padding: 0 18px;
+  text-align: center;
+}
+
+.status-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.status-detail {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.is-loaded #status-panel {
+  display: none;
+}
+
+.has-error #status-panel,
+.has-error #pages {
+  display: none;
+}
+
+.has-error #error-panel {
+  display: block;
+}
+
+.print-mode,
+.print-mode body {
+  background: #ffffff;
+}
+
+.print-mode #viewer-shell {
+  padding: 0;
+}
+
+.print-mode #pages {
+  gap: 0;
+}
+
+.print-mode .page {
+  width: var(--page-width, 794px);
+  box-shadow: none;
+  break-after: page;
+  page-break-after: always;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  #viewer-shell {
+    padding: 0;
+  }
+
+  #pages {
+    gap: 0;
+  }
+
+  .page {
+    width: 100%;
+    box-shadow: none;
+    break-after: page;
+    page-break-after: always;
+  }
+}
