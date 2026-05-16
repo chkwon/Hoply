@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "100000000000000000000401"
-               BuildableName = "DocViewer.app"
-               BlueprintName = "DocViewer"
-               ReferencedContainer = "container:DocViewer.xcodeproj">
+               BuildableName = "Hoply.app"
+               BlueprintName = "Hoply"
+               ReferencedContainer = "container:Hoply.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "100000000000000000000401"
-            BuildableName = "DocViewer.app"
-            BlueprintName = "DocViewer"
-            ReferencedContainer = "container:DocViewer.xcodeproj">
+            BuildableName = "Hoply.app"
+            BlueprintName = "Hoply"
+            ReferencedContainer = "container:Hoply.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "100000000000000000000401"
-            BuildableName = "DocViewer.app"
-            BlueprintName = "DocViewer"
-            ReferencedContainer = "container:DocViewer.xcodeproj">
+            BuildableName = "Hoply.app"
+            BlueprintName = "Hoply"
+            ReferencedContainer = "container:Hoply.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -5,7 +5,7 @@ import UIKit
 import WebKit
 
 final class PreviewProvider: QLPreviewProvider, QLPreviewingController {
-    private let logger = Logger(subsystem: "com.chkwon.DocViewer", category: "QuickLook")
+    private let logger = Logger(subsystem: "com.chkwon.Hoply", category: "QuickLook")
     private var activeRenderers: [ObjectIdentifier: QuickLookPDFRenderer] = [:]
 
     func providePreview(

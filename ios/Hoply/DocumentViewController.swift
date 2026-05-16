@@ -288,7 +288,7 @@ final class DocumentViewController: UIViewController, WKScriptMessageHandler {
         let data = try await createPDF(configuration: configuration)
         let baseName = documentURL.deletingPathExtension().lastPathComponent
         let outputURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("\(baseName)-DocViewer.pdf")
+            .appendingPathComponent("\(baseName)-Hoply.pdf")
         try data.write(to: outputURL, options: .atomic)
         return outputURL
     }

@@ -1,12 +1,12 @@
 {
-  "name": "doc-viewer",
+  "name": "hoply",
   "private": true,
   "scripts": {
     "build:viewer": "bash scripts/build-viewer.sh",
     "build:icons": "scripts/.icon-venv/bin/python scripts/generate-icons.py",
     "update:rhwp": "bash scripts/update-rhwp.sh",
     "ios:typecheck": "bash scripts/typecheck-ios.sh",
-    "ios:build": "xcodebuild -project ios/DocViewer.xcodeproj -scheme DocViewer -sdk iphonesimulator -configuration Debug build CODE_SIGNING_ALLOWED=NO"
+    "ios:build": "xcodebuild -project ios/Hoply.xcodeproj -scheme Hoply -sdk iphonesimulator -configuration Debug build CODE_SIGNING_ALLOWED=NO"
   },
   "workspaces": [
     "web-viewer"

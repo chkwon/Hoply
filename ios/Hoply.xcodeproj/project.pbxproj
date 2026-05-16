@@ -21,7 +21,7 @@
 		200000000000000000000001 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000101 /* PreviewViewController.swift */; };
 		200000000000000000000002 /* ViewerSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000106 /* ViewerSchemeHandler.swift */; };
 		200000000000000000000003 /* ViewerBundle in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000109 /* ViewerBundle */; };
-		200000000000000000000004 /* DocViewerQuickLook.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 200000000000000000000103 /* DocViewerQuickLook.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		200000000000000000000004 /* HoplyQuickLook.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 200000000000000000000103 /* HoplyQuickLook.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		200000000000000000000005 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000104 /* PreviewProvider.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +31,7 @@
 			containerPortal = 100000000000000000000601 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 200000000000000000000401;
-			remoteInfo = DocViewerQuickLook;
+			remoteInfo = HoplyQuickLook;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -42,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				200000000000000000000004 /* DocViewerQuickLook.appex in Embed App Extensions */,
+				200000000000000000000004 /* HoplyQuickLook.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,13 +59,13 @@
 		100000000000000000000107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		100000000000000000000108 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		100000000000000000000109 /* ViewerBundle */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ViewerBundle; path = ../AppResources/ViewerBundle; sourceTree = "<group>"; };
-		100000000000000000000110 /* DocViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		100000000000000000000110 /* Hoply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hoply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		100000000000000000000111 /* ThirdPartyNotices.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ThirdPartyNotices.txt; sourceTree = "<group>"; };
 		100000000000000000000112 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		100000000000000000000113 /* DocumentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListViewController.swift; sourceTree = "<group>"; };
 		200000000000000000000101 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		200000000000000000000102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		200000000000000000000103 /* DocViewerQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DocViewerQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		200000000000000000000103 /* HoplyQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HoplyQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		200000000000000000000104 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,14 +90,14 @@
 		100000000000000000000301 = {
 			isa = PBXGroup;
 			children = (
-				100000000000000000000302 /* DocViewer */,
-				200000000000000000000301 /* DocViewerQuickLook */,
+				100000000000000000000302 /* Hoply */,
+				200000000000000000000301 /* HoplyQuickLook */,
 				100000000000000000000303 /* Resources */,
 				100000000000000000000304 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		100000000000000000000302 /* DocViewer */ = {
+		100000000000000000000302 /* Hoply */ = {
 			isa = PBXGroup;
 			children = (
 				100000000000000000000101 /* AppDelegate.swift */,
@@ -112,7 +112,7 @@
 				100000000000000000000111 /* ThirdPartyNotices.txt */,
 				100000000000000000000108 /* Assets.xcassets */,
 			);
-			path = DocViewer;
+			path = Hoply;
 			sourceTree = "<group>";
 		};
 		100000000000000000000303 /* Resources */ = {
@@ -126,28 +126,28 @@
 		100000000000000000000304 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				100000000000000000000110 /* DocViewer.app */,
-				200000000000000000000103 /* DocViewerQuickLook.appex */,
+				100000000000000000000110 /* Hoply.app */,
+				200000000000000000000103 /* HoplyQuickLook.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		200000000000000000000301 /* DocViewerQuickLook */ = {
+		200000000000000000000301 /* HoplyQuickLook */ = {
 			isa = PBXGroup;
 			children = (
 				200000000000000000000104 /* PreviewProvider.swift */,
 				200000000000000000000101 /* PreviewViewController.swift */,
 				200000000000000000000102 /* Info.plist */,
 			);
-			path = DocViewerQuickLook;
+			path = HoplyQuickLook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		100000000000000000000401 /* DocViewer */ = {
+		100000000000000000000401 /* Hoply */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 100000000000000000000701 /* Build configuration list for PBXNativeTarget "DocViewer" */;
+			buildConfigurationList = 100000000000000000000701 /* Build configuration list for PBXNativeTarget "Hoply" */;
 			buildPhases = (
 				100000000000000000000501 /* Sources */,
 				100000000000000000000201 /* Frameworks */,
@@ -159,14 +159,14 @@
 			dependencies = (
 				200000000000000000000602 /* PBXTargetDependency */,
 			);
-			name = DocViewer;
-			productName = DocViewer;
-			productReference = 100000000000000000000110 /* DocViewer.app */;
+			name = Hoply;
+			productName = Hoply;
+			productReference = 100000000000000000000110 /* Hoply.app */;
 			productType = "com.apple.product-type.application";
 		};
-		200000000000000000000401 /* DocViewerQuickLook */ = {
+		200000000000000000000401 /* HoplyQuickLook */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 200000000000000000000701 /* Build configuration list for PBXNativeTarget "DocViewerQuickLook" */;
+			buildConfigurationList = 200000000000000000000701 /* Build configuration list for PBXNativeTarget "HoplyQuickLook" */;
 			buildPhases = (
 				200000000000000000000501 /* Sources */,
 				200000000000000000000502 /* Frameworks */,
@@ -176,9 +176,9 @@
 			);
 			dependencies = (
 			);
-			name = DocViewerQuickLook;
-			productName = DocViewerQuickLook;
-			productReference = 200000000000000000000103 /* DocViewerQuickLook.appex */;
+			name = HoplyQuickLook;
+			productName = HoplyQuickLook;
+			productReference = 200000000000000000000103 /* HoplyQuickLook.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +201,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 100000000000000000000700 /* Build configuration list for PBXProject "DocViewer" */;
+			buildConfigurationList = 100000000000000000000700 /* Build configuration list for PBXProject "Hoply" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,8 +214,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				100000000000000000000401 /* DocViewer */,
-				200000000000000000000401 /* DocViewerQuickLook */,
+				100000000000000000000401 /* Hoply */,
+				200000000000000000000401 /* HoplyQuickLook */,
 			);
 		};
 /* End PBXProject section */
@@ -272,7 +272,7 @@
 /* Begin PBXTargetDependency section */
 		200000000000000000000602 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 200000000000000000000401 /* DocViewerQuickLook */;
+			target = 200000000000000000000401 /* HoplyQuickLook */;
 			targetProxy = 200000000000000000000601 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -396,15 +396,15 @@
 		100000000000000000000803 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CM5MD58K2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = DocViewer/Info.plist;
+				INFOPLIST_FILE = Hoply/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -412,7 +412,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.DocViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.Hoply;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -424,15 +424,15 @@
 		100000000000000000000804 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CM5MD58K2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = DocViewer/Info.plist;
+				INFOPLIST_FILE = Hoply/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -440,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.DocViewer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.Hoply;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -455,9 +455,9 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CM5MD58K2;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = DocViewerQuickLook/Info.plist;
+				INFOPLIST_FILE = HoplyQuickLook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -465,8 +465,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.DocViewer.QuickLook;
-				PRODUCT_MODULE_NAME = DocViewerQuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.Hoply.QuickLook;
+				PRODUCT_MODULE_NAME = HoplyQuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -482,9 +482,9 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 6CM5MD58K2;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = DocViewerQuickLook/Info.plist;
+				INFOPLIST_FILE = HoplyQuickLook/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,8 +492,8 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.DocViewer.QuickLook;
-				PRODUCT_MODULE_NAME = DocViewerQuickLook;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chkwon.Hoply.QuickLook;
+				PRODUCT_MODULE_NAME = HoplyQuickLook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -506,7 +506,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		100000000000000000000700 /* Build configuration list for PBXProject "DocViewer" */ = {
+		100000000000000000000700 /* Build configuration list for PBXProject "Hoply" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				100000000000000000000801 /* Debug */,
@@ -515,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		100000000000000000000701 /* Build configuration list for PBXNativeTarget "DocViewer" */ = {
+		100000000000000000000701 /* Build configuration list for PBXNativeTarget "Hoply" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				100000000000000000000803 /* Debug */,
@@ -524,7 +524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		200000000000000000000701 /* Build configuration list for PBXNativeTarget "DocViewerQuickLook" */ = {
+		200000000000000000000701 /* Build configuration list for PBXNativeTarget "HoplyQuickLook" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200000000000000000000801 /* Debug */,

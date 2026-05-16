@@ -28,8 +28,8 @@
 			<true/>
 				<key>QLSupportedContentTypes</key>
 				<array>
-					<string>com.chkwon.docviewer.hwp</string>
-				<string>com.chkwon.docviewer.hwpx</string>
+					<string>com.chkwon.hoply.hwp</string>
+				<string>com.chkwon.hoply.hwpx</string>
 				<string>com.hancom.hwp</string>
 				<string>com.hancom.hwpx</string>
 				<string>com.haansoft.hancomofficeviewer.mac.hwp</string>

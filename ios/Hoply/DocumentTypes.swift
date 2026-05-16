@@ -1,8 +1,8 @@
 import UniformTypeIdentifiers
 
 extension UTType {
-    static let hwpOwnedDocument = UTType("com.chkwon.docviewer.hwp") ?? UTType(exportedAs: "com.chkwon.docviewer.hwp", conformingTo: .data)
-    static let hwpxOwnedDocument = UTType("com.chkwon.docviewer.hwpx") ?? UTType(exportedAs: "com.chkwon.docviewer.hwpx", conformingTo: .data)
+    static let hwpOwnedDocument = UTType("com.chkwon.hoply.hwp") ?? UTType(exportedAs: "com.chkwon.hoply.hwp", conformingTo: .data)
+    static let hwpxOwnedDocument = UTType("com.chkwon.hoply.hwpx") ?? UTType(exportedAs: "com.chkwon.hoply.hwpx", conformingTo: .data)
 
     static let hwpDocument = UTType("com.hancom.hwp") ?? UTType(importedAs: "com.hancom.hwp", conformingTo: .data)
     static let hwpHancomOfficeDocument = UTType("com.haansoft.hancomofficeviewer.mac.hwp") ?? UTType(importedAs: "com.haansoft.hancomofficeviewer.mac.hwp", conformingTo: .data)

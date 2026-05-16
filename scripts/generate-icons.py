@@ -2,7 +2,7 @@
 """
 Generate Hoply app icons and HWP / HWPX document icons.
 
-Outputs into ios/DocViewer/Assets.xcassets/.
+Outputs into ios/Hoply/Assets.xcassets/.
 
 Run via the bundled venv:
     scripts/.icon-venv/bin/python scripts/generate-icons.py
@@ -19,11 +19,10 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-ASSETS_ROOT = PROJECT_ROOT / "ios" / "DocViewer" / "Assets.xcassets"
+ASSETS_ROOT = PROJECT_ROOT / "ios" / "Hoply" / "Assets.xcassets"
 
 BRAND_BLUE = (47, 107, 255, 255)
-BRAND_NAVY = (27, 71, 181, 255)
-BRAND_ACCENT = (127, 168, 255, 255)
+BRAND_TEAL = (20, 184, 166, 255)
 PAPER_WHITE = (255, 255, 255, 255)
 PAPER_FOLD = (224, 234, 255, 255)
 PAPER_SHADOW = (210, 222, 247, 255)
@@ -56,14 +55,11 @@ APP_ICON_SIZES = {
     "Icon-1024.png": 1024,
 }
 
-DOC_ICON_VARIANTS = [
-    # (filename suffix, idiom,  scale, point, pixel)
-    ("22pt@2x.png",    "iphone", "2x",  22,   44),
-    ("22pt@3x.png",    "iphone", "3x",  22,   66),
-    ("64pt.png",       "ipad",   "1x",  64,   64),
-    ("64pt@2x.png",    "ipad",   "2x",  64,   128),
-    ("320pt.png",      "ipad",   "1x",  320,  320),
-    ("320pt@2x.png",   "ipad",   "2x",  320,  640),
+DOC_ICON_SCALES = [
+    # (filename suffix, scale, pixel)
+    (".png",     "1x", 320),
+    ("@2x.png",  "2x", 640),
+    ("@3x.png",  "3x", 960),
 ]
 
 
@@ -170,16 +166,6 @@ def render_document_icon(size: int, label: str, band_color: tuple[int, int, int,
     ]
     draw.line(crease, fill=PAPER_SHADOW, width=max(1, size // 320))
 
-    # HWPX accent: thin zipper tab along the left edge.
-    if label == "HWPX" and size >= 240:
-        tab_w = max(2, int(size * 0.018))
-        tab_inset = max(4, int(size * 0.045))
-        draw.rectangle(
-            (paper_left + tab_inset, paper_top + int(size * 0.15),
-             paper_left + tab_inset + tab_w, paper_bottom - int(size * 0.15)),
-            fill=BRAND_ACCENT,
-        )
-
     # Bottom band carrying the format label.
     band_height = int(size * 0.30)
     band_top = paper_bottom - band_height
@@ -238,20 +224,19 @@ def write_document_icons(asset_root: Path, name: str, label: str, band_color: tu
 
     master = render_document_icon(960, label, band_color)
     images = []
-    for suffix, idiom, scale, point, pixel in DOC_ICON_VARIANTS:
-        filename = f"{name}-{suffix}"
+    for suffix, scale, pixel in DOC_ICON_SCALES:
+        filename = f"{name}{suffix}"
         if pixel == 960:
             img = master
         else:
             img = master.resize((pixel, pixel), Image.Resampling.LANCZOS)
         img.save(imageset / filename, format="PNG", optimize=True)
-        print(f"  doc  {name}/{filename:40s}  {pixel:>4}px  ({idiom} {scale} {point}pt)")
+        print(f"  doc  {name}/{filename:36s}  {pixel:>4}px  (universal {scale})")
         images.append(
             {
                 "filename": filename,
-                "idiom": idiom,
+                "idiom": "universal",
                 "scale": scale,
-                "size": f"{point}x{point}",
             }
         )
 
@@ -283,7 +268,7 @@ def main() -> int:
         print("Rendering HWP document icon…")
         write_document_icons(asset_root, "HWPDocumentIcon", "HWP", BRAND_BLUE)
         print("Rendering HWPX document icon…")
-        write_document_icons(asset_root, "HWPXDocumentIcon", "HWPX", BRAND_NAVY)
+        write_document_icons(asset_root, "HWPXDocumentIcon", "HWPX", BRAND_TEAL)
 
     print("Done.")
     return 0

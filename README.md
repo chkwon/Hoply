@@ -23,7 +23,7 @@ scripts/.icon-venv/bin/pip install pillow
 npm run build:icons
 ```
 
-Open `ios/DocViewer.xcodeproj` in Xcode to run on a device or prepare App Store signing.
+Open `ios/Hoply.xcodeproj` in Xcode to run on a device or prepare App Store signing.
 
 ## Updating rhwp
 

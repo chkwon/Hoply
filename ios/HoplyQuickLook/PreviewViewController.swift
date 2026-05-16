@@ -4,7 +4,7 @@ import UIKit
 import WebKit
 
 final class PreviewViewController: UIViewController, QLPreviewingController, WKNavigationDelegate, WKScriptMessageHandler {
-    private let logger = Logger(subsystem: "com.chkwon.DocViewer", category: "QuickLook")
+    private let logger = Logger(subsystem: "com.chkwon.Hoply", category: "QuickLook")
     private var documentURL: URL?
     private var webView: WKWebView!
     private var schemeHandler: ViewerSchemeHandler?
