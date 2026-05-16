@@ -1,10 +1,15 @@
 # Hoply
 
-Hoply is a personal iOS HWP / HWPX document viewer built around `@rhwp/core`.
+Hoply는 `@rhwp/core` 위에 만든 개인용 iOS HWP / HWPX 문서 뷰어다.
 
-The app is intentionally read-only. It opens `.hwp` and `.hwpx` documents from Files / Open In, renders them locally in a bundled `WKWebView`, and supports original/PDF sharing plus printing.
+읽기 전용 앱으로 설계했으며, 파일 앱이나 "다른 앱에서 열기"로 `.hwp` · `.hwpx` 문서를 받아 번들된 `WKWebView` 안에서 로컬로 렌더링한다. 원본·PDF 공유와 인쇄(AirPrint)도 함께 지원한다.
 
-## Build
+## 이름과 기반
+
+- 렌더러: [`@rhwp/core`](https://github.com/edwardkim/rhwp). HWP / HWPX 파싱과 렌더링은 전부 이 라이브러리가 담당하며, 빌드 시 WASM / JS로 번들되어 앱에 포함된다.
+- 이름의 유래: "Hoply"는 [HOP](https://github.com/golbin/hop)에서 따온 이름이다. 다만 **이 앱의 코드는 HOP에서 가져오지 않았으며, HOP에 의존하지도 않는다.** 이름에 대한 오마주일 뿐 코드·아키텍처 상으로는 독립적이다.
+
+## 빌드
 
 ```bash
 npm install
@@ -13,9 +18,9 @@ npm run ios:typecheck
 npm run ios:build
 ```
 
-## Regenerating icons
+## 아이콘 재생성
 
-The app icon and HWP / HWPX document icons are generated procedurally with Pillow:
+앱 아이콘과 HWP / HWPX 문서 아이콘은 Pillow로 코드에서 생성한다.
 
 ```bash
 python3 -m venv scripts/.icon-venv
@@ -23,14 +28,40 @@ scripts/.icon-venv/bin/pip install pillow
 npm run build:icons
 ```
 
-Open `ios/Hoply.xcodeproj` in Xcode to run on a device or prepare App Store signing.
+실기기 실행이나 App Store 서명 준비는 `ios/Hoply.xcodeproj`를 Xcode에서 열어 진행한다.
 
-## Updating rhwp
+## rhwp 업데이트
 
 ```bash
 npm run update:rhwp -- 0.7.11
 ```
 
-The update script pins `@rhwp/core`, rebuilds the web viewer, and copies the generated assets into `AppResources/ViewerBundle`.
+이 스크립트는 `@rhwp/core` 버전을 고정하고, 웹 뷰어를 다시 빌드한 뒤 결과물을 `AppResources/ViewerBundle`로 복사한다.
 
-All executable viewer code is bundled into the app. Do not hot-update WASM/JS from a remote server for App Store builds.
+실행 가능한 뷰어 코드는 전부 앱에 번들된다. App Store 빌드에서는 원격 서버로부터 WASM / JS를 핫업데이트하지 않는다.
+
+## 버전 관리
+
+마케팅 버전(semver, 예: `0.1.0`)과 빌드 번호(모든 App Store Connect 업로드를 통틀어 단조 증가)는 두 곳에 산다: `ios/Hoply.xcodeproj/project.pbxproj`의 `MARKETING_VERSION` / `CURRENT_PROJECT_VERSION`, 그리고 `web-viewer/package.json`의 `version`. 두 `Info.plist`는 `$(MARKETING_VERSION)` / `$(CURRENT_PROJECT_VERSION)` 치환자로 값을 받으므로 직접 수정할 필요가 없다.
+
+다음 명령으로 모든 위치를 한 번에 올린다.
+
+```bash
+npm run release:bump 0.2.0          # 빌드 번호 자동 증가
+npm run release:bump 0.2.0 7        # 빌드 번호 명시
+```
+
+사용자에게 보이는 변경 사항은 `CHANGELOG.md`에 해당 버전 항목으로 기록한다.
+
+## App Store 배포
+
+릴리스별 절차 (자세한 변경 내역은 `CHANGELOG.md` 참고):
+
+1. `npm run release:bump <new-version>` 실행 후 `CHANGELOG.md` 갱신.
+2. `npm run build:viewer && npm run ios:typecheck`로 번들 뷰어를 갱신하고 Swift 소스를 점검.
+3. `git commit -am "release: vX.Y.Z (build N)" && git tag vX.Y.Z-N && git push --follow-tags`.
+4. `ios/Hoply.xcodeproj`를 Xcode에서 열고, 스킴 **Hoply**, 대상 **Any iOS Device (arm64)** 선택 후 **Product → Archive**.
+5. Organizer에서 **Validate App**을 먼저 돌리고, 통과하면 **Distribute App → App Store Connect → Upload**.
+6. App Store Connect에서 빌드를 TestFlight에 추가해 실기기로 스모크 테스트한 뒤, 해당 버전을 심사에 제출.
+
+리포지터리 바깥에서 한 번 준비해야 하는 항목: App Store Connect 앱 레코드와 번들 ID 등록(`com.chkwon.Hoply`, `com.chkwon.Hoply.QuickLook`), 개인정보 처리방침 URL, 스크린샷, "What's New" 문구, 그리고 심사팀이 열어볼 수 있는 샘플 `.hwp` 문서.
