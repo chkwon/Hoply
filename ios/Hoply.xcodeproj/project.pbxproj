@@ -23,6 +23,8 @@
 		200000000000000000000003 /* ViewerBundle in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000109 /* ViewerBundle */; };
 		200000000000000000000004 /* HoplyQuickLook.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 200000000000000000000103 /* HoplyQuickLook.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		200000000000000000000005 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000104 /* PreviewProvider.swift */; };
+		10000000000000000000000C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000114 /* PrivacyInfo.xcprivacy */; };
+		200000000000000000000006 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000105 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		200000000000000000000102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		200000000000000000000103 /* HoplyQuickLook.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HoplyQuickLook.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		200000000000000000000104 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		100000000000000000000114 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		200000000000000000000105 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 				100000000000000000000105 /* DocumentViewController.swift */,
 				100000000000000000000106 /* ViewerSchemeHandler.swift */,
 				100000000000000000000107 /* Info.plist */,
+				100000000000000000000114 /* PrivacyInfo.xcprivacy */,
 				100000000000000000000112 /* LaunchScreen.storyboard */,
 				100000000000000000000111 /* ThirdPartyNotices.txt */,
 				100000000000000000000108 /* Assets.xcassets */,
@@ -138,6 +143,7 @@
 				200000000000000000000104 /* PreviewProvider.swift */,
 				200000000000000000000101 /* PreviewViewController.swift */,
 				200000000000000000000102 /* Info.plist */,
+				200000000000000000000105 /* PrivacyInfo.xcprivacy */,
 			);
 			path = HoplyQuickLook;
 			sourceTree = "<group>";
@@ -229,6 +235,7 @@
 				100000000000000000000008 /* ViewerBundle in Resources */,
 				100000000000000000000009 /* ThirdPartyNotices.txt in Resources */,
 				10000000000000000000000A /* LaunchScreen.storyboard in Resources */,
+				10000000000000000000000C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				200000000000000000000003 /* ViewerBundle in Resources */,
+				200000000000000000000006 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,8 @@
     "build:icons": "scripts/.icon-venv/bin/python scripts/generate-icons.py",
     "update:rhwp": "bash scripts/update-rhwp.sh",
     "ios:typecheck": "bash scripts/typecheck-ios.sh",
-    "ios:build": "xcodebuild -project ios/Hoply.xcodeproj -scheme Hoply -sdk iphonesimulator -configuration Debug build CODE_SIGNING_ALLOWED=NO"
+    "ios:build": "xcodebuild -project ios/Hoply.xcodeproj -scheme Hoply -sdk iphonesimulator -configuration Debug build CODE_SIGNING_ALLOWED=NO",
+    "release:bump": "bash scripts/bump-version.sh"
   },
   "workspaces": [
     "web-viewer"
