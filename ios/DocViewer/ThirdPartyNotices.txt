@@ -1,0 +1,12 @@
+Third-Party Notices
+
+This app includes @rhwp/core, Copyright (c) 2025-2026 Edward Kim.
+@rhwp/core is distributed under the MIT License.
+
+Repository: https://github.com/edwardkim/rhwp
+Package: https://www.npmjs.com/package/@rhwp/core
+
+This product is an independent viewer and is not affiliated with, endorsed by,
+or sponsored by Hancom Inc. "HWP", "HWPX", "Hancom", and related names may be
+trademarks of their respective owners.
+
