@@ -10,6 +10,11 @@ Connect across all marketing versions.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-17
+
+### Internal
+- Pipeline validation build. Exercises the Xcode Cloud workflow end-to-end with the version bump script and tag-triggered release. No user-visible changes from 0.1.0.
+
 ## [0.1.0] - 2026-05-16
 
 ### Added
@@ -20,5 +25,6 @@ Connect across all marketing versions.
 - AirPrint support.
 - Quick Look preview extension (`HoplyQuickLook`) for `.hwp` and `.hwpx` in Files and other system surfaces.
 
-[Unreleased]: https://github.com/chkwon/Hoply/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/chkwon/Hoply/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/chkwon/Hoply/releases/tag/v0.1.1
 [0.1.0]: https://github.com/chkwon/Hoply/releases/tag/v0.1.0
