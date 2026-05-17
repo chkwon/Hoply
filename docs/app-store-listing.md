@@ -151,9 +151,9 @@ Initial App Store release.
 | Field           | Value                                            |
 |-----------------|--------------------------------------------------|
 | Support URL     | `https://github.com/chkwon/Hoply/issues`         |
-| Marketing URL   | `https://chkwon.github.io/Hoply/`                |
-| Privacy Policy (KR primary) | `https://chkwon.github.io/Hoply/privacy-policy.html` |
-| Privacy Policy (EN locale)  | `https://chkwon.github.io/Hoply/privacy-policy.en.html` |
+| Marketing URL   | `https://www.chkwon.net/Hoply/`                |
+| Privacy Policy (KR primary) | `https://www.chkwon.net/Hoply/privacy-policy.html` |
+| Privacy Policy (EN locale)  | `https://www.chkwon.net/Hoply/privacy-policy.en.html` |
 
 ---
 
@@ -206,8 +206,8 @@ Hoply is a read-only HWP / HWPX document viewer. It performs no network requests
 
 To exercise the app:
 1. Download the sample documents (both formats are supported):
-   - HWP:  https://chkwon.github.io/Hoply/review-assets/sample.hwp
-   - HWPX: https://chkwon.github.io/Hoply/review-assets/sample.hwpx
+   - HWP:  https://www.chkwon.net/Hoply/review-assets/sample.hwp
+   - HWPX: https://www.chkwon.net/Hoply/review-assets/sample.hwpx
 2. Open each in Files, then either:
    a) Tap to preview via Quick Look (uses the bundled HoplyQuickLook extension), or
    b) Long-press → "Share" → choose Hoply, or open with Hoply from "Open In…"

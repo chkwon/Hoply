@@ -17,7 +17,7 @@ App Store 심사팀이 Hoply를 동작시키는 데 사용할 샘플 문서가 �
 이 폴더의 파일은 GitHub Pages에서 다음 경로로 노출된다.
 
 ```
-https://chkwon.github.io/Hoply/review-assets/sample.hwp
+https://www.chkwon.net/Hoply/review-assets/sample.hwp
 ```
 
 이 URL은 `docs/app-store-listing.md`의 **App Review Information → Review Notes**에 포함되어 있으므로, 새 버전을 제출할 때마다 재업로드하지 않아도 같은 링크를 재사용할 수 있다.
@@ -27,6 +27,6 @@ https://chkwon.github.io/Hoply/review-assets/sample.hwp
 1. 위 권장 사양에 맞는 `.hwp` 파일을 만들거나 준비한다.
 2. 이 폴더로 복사한다: `cp /path/to/your.hwp docs/review-assets/sample.hwp`
 3. 커밋하고 push: `git add docs/review-assets/sample.hwp && git commit -m "docs: add sample.hwp for App Review" && git push`
-4. GitHub Pages 빌드가 끝난 뒤 `curl -sI https://chkwon.github.io/Hoply/review-assets/sample.hwp`가 `HTTP/2 200`을 반환하는지 확인한다.
+4. GitHub Pages 빌드가 끝난 뒤 `curl -sI https://www.chkwon.net/Hoply/review-assets/sample.hwp`가 `HTTP/2 200`을 반환하는지 확인한다.
 
 `.hwpx` 샘플도 함께 두고 싶다면 같은 절차로 `sample.hwpx`를 추가해도 좋다(필수는 아님; `.hwp` 하나로 충분).
