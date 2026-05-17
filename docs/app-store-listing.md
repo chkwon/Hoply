@@ -8,10 +8,16 @@ App Store Connect 텍스트 필드 원본 모음. KR(Primary) + EN 두 가지 �
 
 ## App Name (30자 / 30 chars)
 
-Same in both locales.
+이름이 로케일별로 다르다. 영어 스토어에서 `Hoply` 단독은 이미 사용 중이라 거절되므로 한정어를 붙인다. 홈 화면 아이콘 라벨은 `Info.plist`의 `CFBundleDisplayName="Hoply"`에서 오므로, 스토어 이름과 무관하게 기기 위에선 항상 "Hoply"로 보인다.
 
+**KR**
 ```
 Hoply
+```
+
+**EN**
+```
+Hoply: HWP Viewer
 ```
 
 ---
