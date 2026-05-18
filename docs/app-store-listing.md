@@ -1,58 +1,39 @@
 # App Store Listing — Hoply 0.1.0
 
-App Store Connect 텍스트 필드 원본 모음. KR(Primary) + EN 두 가지 로컬라이제이션을 같이 둔다. 각 항목은 그대로 복사·붙여넣기 할 수 있도록 코드 펜스로 감쌌다. 글자수 제한은 항목마다 표기.
+App Store Connect 텍스트 필드 원본 모음. 한국어 단일 로컬라이제이션(KR primary)으로 출시한다 — English locale은 ASC에 등록하지 않는다. 각 항목은 그대로 복사·붙여넣기 할 수 있도록 코드 펜스로 감쌌다. 글자수 제한은 항목마다 표기.
 
 업데이트 절차: 본문 변경 시 이 파일을 먼저 고치고, 그 텍스트를 App Store Connect에 반영한다. 그래야 다음 릴리스 때 원본이 어디 있었는지 헷갈리지 않는다.
 
 ---
 
-## App Name (30자 / 30 chars)
+## App Name (30자)
 
-이름이 로케일별로 다르다. 영어 스토어에서 `Hoply` 단독은 이미 사용 중이라 거절되므로 한정어를 붙인다. 홈 화면 아이콘 라벨은 `Info.plist`의 `CFBundleDisplayName="Hoply"`에서 오므로, 스토어 이름과 무관하게 기기 위에선 항상 "Hoply"로 보인다.
+홈 화면 아이콘 라벨은 `Info.plist`의 `CFBundleDisplayName="Hoply"`에서 오므로, 스토어 이름과 무관하게 기기 위에선 항상 "Hoply"로 보인다.
 
-**KR**
 ```
 Hoply
 ```
 
-**EN**
-```
-Hoply: HWP Viewer
-```
-
 ---
 
-## Subtitle (30자 / 30 chars)
+## Subtitle (30자)
 
-**KR**
 ```
 HWP · HWPX 문서 뷰어
 ```
 
-**EN**
-```
-HWP / HWPX document viewer
-```
-
 ---
 
-## Promotional Text (170자 / 170 chars, 재심사 없이 수정 가능)
+## Promotional Text (170자, 재심사 없이 수정 가능)
 
-**KR**
 ```
 .hwp · .hwpx 문서를 기기 안에서 바로 열어보세요. 외부 서버 전송 없이 로컬에서 렌더링하고, 원본·PDF 공유와 인쇄까지 지원합니다. Files와 Quick Look에도 통합됩니다.
 ```
 
-**EN**
-```
-Open .hwp and .hwpx documents right on your device. Everything renders locally — no upload, no tracking — with original/PDF share and AirPrint. Integrated with Files and Quick Look.
-```
-
 ---
 
-## Description (4,000자 / 4,000 chars)
+## Description (4,000자)
 
-**KR**
 ```
 Hoply는 한컴오피스(.hwp · .hwpx) 문서를 iOS 기기에서 빠르고 조용하게 열어볼 수 있는 개인용 뷰어 앱입니다. 모든 처리는 기기 안에서 이루어지며, 문서 내용은 어떤 외부 서버로도 전송되지 않습니다.
 
@@ -83,56 +64,18 @@ Hoply는 오픈소스 HWP / HWPX 렌더링 라이브러리인 @rhwp/core 위에 
 본 앱은 Hancom Inc.와 제휴·후원 관계가 없는 독립 제품입니다. "HWP", "HWPX", "Hancom" 등은 각 권리자의 상표입니다.
 ```
 
-**EN**
-```
-Hoply is a personal viewer for Hancom Office (.hwp · .hwpx) documents on iOS. Everything happens on-device — document content is never sent to any external server.
-
-Features
-• Render .hwp · .hwpx documents handed off from the Files app or "Open In…"
-• Share originals or PDFs via the system share sheet
-• Print via AirPrint
-• Quick Look preview extension so .hwp · .hwpx files preview wherever iOS shows them — Files, Mail, Messages, and more
-• Fully offline: the app itself makes no network requests. Sharing and printing use Apple's standard system features and only when you choose them
-
-Design principles
-• Read-only by design — no editing, no save-as. The app does one thing and gets out of the way.
-• No tracking — no analytics, advertising, or tracking SDKs.
-• No data collection — no account, no sign-in, no identifiers. See the privacy policy for details.
-
-Built on
-Hoply is built on @rhwp/core, an open-source HWP / HWPX rendering library. All parsing and rendering code is bundled with the app; nothing is downloaded from a remote server at runtime.
-
-Compatibility
-• iOS 16.0 or later
-• iPhone and iPad
-• Some advanced Hancom Office features (e.g. macros, certain rich table styles) may not render fully and may be displayed in simplified form.
-
-Contact
-• Email: chkwon@gmail.com
-• Bug reports and feature requests: https://github.com/chkwon/Hoply/issues
-
-This app is an independent product and is not affiliated with, endorsed by, or sponsored by Hancom Inc. "HWP", "HWPX", and "Hancom" are trademarks of their respective owners.
-```
-
 ---
 
-## Keywords (100자 / 100 chars, 쉼표 사이 공백 없음)
+## Keywords (100자, 쉼표 사이 공백 없음)
 
-**KR**
 ```
 한컴,한글,HWP,HWPX,문서뷰어,한컴오피스,Hancom,오피스,파일,뷰어
 ```
 
-**EN**
-```
-HWP,HWPX,Hancom,Korean,document,viewer,office,reader,file,quicklook
-```
-
 ---
 
-## What's New in This Version — 0.1.0 (4,000자 / 4,000 chars)
+## What's New in This Version — 0.1.0 (4,000자)
 
-**KR**
 ```
 첫 App Store 릴리스입니다.
 • .hwp · .hwpx 문서를 기기에서 로컬로 렌더링합니다.
@@ -141,25 +84,18 @@ HWP,HWPX,Hancom,Korean,document,viewer,office,reader,file,quicklook
 • Quick Look 확장으로 Files 등에서 미리 보기가 가능합니다.
 ```
 
-**EN**
-```
-Initial App Store release.
-• Renders .hwp · .hwpx documents locally on-device.
-• Opens from the Files app and "Open In…".
-• Supports original/PDF share and AirPrint printing.
-• Includes a Quick Look preview extension for .hwp · .hwpx files.
-```
-
 ---
 
 ## URLs
 
+ASC에 입력하는 URL은 위 세 가지(Support / Marketing / Privacy Policy). EN privacy URL은 ASC에 입력하지 않고 비한국어 방문자 호의용으로 웹사이트에만 둔다.
+
 | Field           | Value                                            |
 |-----------------|--------------------------------------------------|
 | Support URL     | `https://github.com/chkwon/Hoply/issues`         |
-| Marketing URL   | `https://www.chkwon.net/Hoply/`                |
-| Privacy Policy (KR primary) | `https://www.chkwon.net/Hoply/privacy-policy.html` |
-| Privacy Policy (EN locale)  | `https://www.chkwon.net/Hoply/privacy-policy.en.html` |
+| Marketing URL   | `https://www.chkwon.net/Hoply/`                  |
+| Privacy Policy  | `https://www.chkwon.net/Hoply/privacy-policy.html` |
+| (웹사이트 보존용, ASC 미사용) | `https://www.chkwon.net/Hoply/privacy-policy.en.html` |
 
 ---
 
@@ -205,7 +141,7 @@ This matches `ios/Hoply/PrivacyInfo.xcprivacy` (`NSPrivacyCollectedDataTypes = [
 | Sign-in required | **No** (toggle off)                                |
 | Demo account     | N/A                                                |
 
-**Review Notes** (paste verbatim — bilingual; reviewers read English):
+**Review Notes** (paste verbatim — App Review 담당자는 영어로 읽으므로 노트는 영어로 유지):
 
 ```
 Hoply is a read-only HWP / HWPX document viewer. It performs no network requests of its own, stores no user data, and requires no sign-in.
