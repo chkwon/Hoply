@@ -14,6 +14,7 @@ Connect across all marketing versions.
 
 ### Internal
 - Pipeline validation build. Exercises the Xcode Cloud workflow end-to-end with the version bump script and tag-triggered release. No user-visible changes from 0.1.0.
+- Build 3 (2026-05-18): re-uploaded after switching the Xcode Cloud workflow's Distribution Preparation away from "TestFlight (Internal Testing Only)" so the binary is App Store submission-eligible. No source changes vs. build 2.
 
 ## [0.1.0] - 2026-05-16
 
