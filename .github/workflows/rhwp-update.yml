@@ -1,0 +1,212 @@
+name: Update rhwp core
+
+on:
+  schedule:
+    - cron: "20 0 * * *"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Optional @rhwp/core version. Defaults to the latest npm release."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: rhwp-core-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Check and update @rhwp/core
+    runs-on: macos-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REQUESTED_VERSION: ${{ github.event.inputs.version || '' }}
+      BASE_BRANCH: ${{ github.event.repository.default_branch }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Resolve @rhwp/core versions
+        id: versions
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_version="$(node -p "require('./web-viewer/package.json').dependencies['@rhwp/core']")"
+
+          if [ -n "$REQUESTED_VERSION" ]; then
+            target_version="$(npm view "@rhwp/core@$REQUESTED_VERSION" version)"
+          else
+            target_version="$(npm view @rhwp/core version)"
+          fi
+
+          needs_update="$(
+            node - "$current_version" "$target_version" <<'NODE'
+          const [current, target] = process.argv.slice(2);
+          const parse = (version) => version.replace(/^v/, '').split(/[.-]/).slice(0, 3).map((part) => Number(part));
+          const [currentParts, targetParts] = [parse(current), parse(target)];
+          let comparison = 0;
+
+          for (let index = 0; index < 3; index += 1) {
+            const delta = (targetParts[index] || 0) - (currentParts[index] || 0);
+            if (delta !== 0) {
+              comparison = delta;
+              break;
+            }
+          }
+
+          process.stdout.write(comparison > 0 ? 'true' : 'false');
+          NODE
+          )"
+
+          branch_name="bot/rhwp-core-$target_version"
+          issue_title="@rhwp/core $target_version update failed"
+
+          {
+            echo "current_version=$current_version"
+            echo "target_version=$target_version"
+            echo "needs_update=$needs_update"
+            echo "branch_name=$branch_name"
+            echo "issue_title=$issue_title"
+          } >> "$GITHUB_OUTPUT"
+
+          if [ "$needs_update" = "true" ]; then
+            echo "@rhwp/core update available: $current_version -> $target_version"
+          else
+            echo "@rhwp/core is up to date: $current_version"
+          fi
+
+      - name: Update dependency, rebuild viewer, and verify iOS build
+        id: update
+        if: steps.versions.outputs.needs_update == 'true'
+        shell: bash
+        run: |
+          set -o pipefail
+
+          {
+            set -e
+            echo "### npm run update:rhwp -- ${{ steps.versions.outputs.target_version }}"
+            npm run update:rhwp -- "${{ steps.versions.outputs.target_version }}"
+
+            echo "### npm run ios:typecheck"
+            npm run ios:typecheck
+
+            echo "### npm run ios:build"
+            npm run ios:build
+          } 2>&1 | tee rhwp-update.log
+
+          status="${PIPESTATUS[0]}"
+          echo "status=$status" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Create or update failure issue
+        if: steps.versions.outputs.needs_update == 'true' && steps.update.outputs.status != '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_version="${{ steps.versions.outputs.current_version }}"
+          target_version="${{ steps.versions.outputs.target_version }}"
+          issue_title="${{ steps.versions.outputs.issue_title }}"
+          body_file="$(mktemp)"
+
+          {
+            echo "Automated @rhwp/core update failed."
+            echo
+            echo "- Current version: \`$current_version\`"
+            echo "- Target version: \`$target_version\`"
+            echo "- Workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo
+            echo '```text'
+            tail -n 160 rhwp-update.log
+            echo '```'
+          } > "$body_file"
+
+          issue_number="$(
+            gh issue list \
+              --state open \
+              --search "\"$issue_title\" in:title" \
+              --json number,title \
+              --jq ".[] | select(.title == \"$issue_title\") | .number" \
+              | head -n 1
+          )"
+
+          if [ -n "$issue_number" ]; then
+            gh issue comment "$issue_number" --body-file "$body_file"
+          else
+            gh issue create --title "$issue_title" --body-file "$body_file"
+          fi
+
+          exit 1
+
+      - name: Commit update and open pull request
+        if: steps.versions.outputs.needs_update == 'true' && steps.update.outputs.status == '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_version="${{ steps.versions.outputs.current_version }}"
+          target_version="${{ steps.versions.outputs.target_version }}"
+          branch_name="${{ steps.versions.outputs.branch_name }}"
+
+          if git diff --quiet; then
+            echo "Update command produced no tracked file changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin "$branch_name:refs/remotes/origin/$branch_name" || true
+          git switch -c "$branch_name"
+
+          git add web-viewer/package.json package-lock.json AppResources/ViewerBundle
+          git commit -m "build: update @rhwp/core to $target_version"
+          git push --force-with-lease origin "$branch_name"
+
+          body_file="$(mktemp)"
+          {
+            echo "Updates \`@rhwp/core\` from \`$current_version\` to \`$target_version\`."
+            echo
+            echo "This PR was generated by the scheduled rhwp update workflow."
+            echo
+            echo "Verification:"
+            echo "- \`npm run update:rhwp -- $target_version\`"
+            echo "- \`npm run ios:typecheck\`"
+            echo "- \`npm run ios:build\`"
+          } > "$body_file"
+
+          pr_number="$(
+            gh pr list \
+              --head "$branch_name" \
+              --state open \
+              --json number \
+              --jq '.[0].number // ""'
+          )"
+
+          if [ -n "$pr_number" ]; then
+            gh pr edit "$pr_number" \
+              --title "Update @rhwp/core to $target_version" \
+              --body-file "$body_file"
+          else
+            gh pr create \
+              --head "$branch_name" \
+              --base "$BASE_BRANCH" \
+              --title "Update @rhwp/core to $target_version" \
+              --body-file "$body_file"
+          fi
