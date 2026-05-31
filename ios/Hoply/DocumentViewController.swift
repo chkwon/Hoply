@@ -1,4 +1,5 @@
 import UIKit
+import StoreKit
 import WebKit
 
 final class DocumentViewController: UIViewController, WKScriptMessageHandler {
@@ -9,6 +10,7 @@ final class DocumentViewController: UIViewController, WKScriptMessageHandler {
     private var pageCount = 0
     private var currentPageIndex = 0
     private var zoomScale: Double = 1
+    private var didRecordSuccessfulOpen = false
     private let pageLabel = UILabel()
     private let titleLabel = UILabel()
 
@@ -191,6 +193,7 @@ final class DocumentViewController: UIViewController, WKScriptMessageHandler {
                 setViewerTitle(fileName)
             }
             updatePageLabel()
+            recordSuccessfulOpenIfNeeded()
         case "pageChanged":
             currentPageIndex = body["pageIndex"] as? Int ?? currentPageIndex
             updatePageLabel()
@@ -218,6 +221,12 @@ final class DocumentViewController: UIViewController, WKScriptMessageHandler {
             return
         }
         pageLabel.text = "\(min(currentPageIndex + 1, pageCount)) / \(pageCount)"
+    }
+
+    private func recordSuccessfulOpenIfNeeded() {
+        guard pageCount > 0, !didRecordSuccessfulOpen else { return }
+        didRecordSuccessfulOpen = true
+        AppReviewPrompt.recordSuccessfulDocumentOpen(from: self)
     }
 
     @objc private func zoomIn() {
@@ -347,6 +356,27 @@ final class DocumentViewController: UIViewController, WKScriptMessageHandler {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .default))
         present(alert, animated: true)
+    }
+}
+
+@MainActor
+private enum AppReviewPrompt {
+    private static let successfulOpenCountKey = "appReviewPrompt.successfulOpenCount"
+    private static let didRequestReviewKey = "appReviewPrompt.didRequestReview"
+    private static let minimumSuccessfulOpens = 3
+
+    static func recordSuccessfulDocumentOpen(from viewController: UIViewController) {
+        let defaults = UserDefaults.standard
+        guard defaults.bool(forKey: didRequestReviewKey) == false else { return }
+
+        let successfulOpenCount = defaults.integer(forKey: successfulOpenCountKey) + 1
+        defaults.set(successfulOpenCount, forKey: successfulOpenCountKey)
+
+        guard successfulOpenCount >= minimumSuccessfulOpens else { return }
+        guard let windowScene = viewController.view.window?.windowScene else { return }
+
+        defaults.set(true, forKey: didRequestReviewKey)
+        SKStoreReviewController.requestReview(in: windowScene)
     }
 }
 

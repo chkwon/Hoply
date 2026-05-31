@@ -10,6 +10,14 @@ Connect across all marketing versions.
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-31
+
+### Added
+- Ask for an App Store rating after several successful document opens.
+
+### Changed
+- Updated App Store metadata source text for better HWP / HWPX viewer discoverability.
+
 ## [0.1.1] - 2026-05-17
 
 ### Internal
@@ -26,6 +34,7 @@ Connect across all marketing versions.
 - AirPrint support.
 - Quick Look preview extension (`HoplyQuickLook`) for `.hwp` and `.hwpx` in Files and other system surfaces.
 
-[Unreleased]: https://github.com/chkwon/Hoply/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/chkwon/Hoply/compare/v0.1.2-4...HEAD
+[0.1.2]: https://github.com/chkwon/Hoply/releases/tag/v0.1.2-4
 [0.1.1]: https://github.com/chkwon/Hoply/releases/tag/v0.1.1
 [0.1.0]: https://github.com/chkwon/Hoply/releases/tag/v0.1.0
